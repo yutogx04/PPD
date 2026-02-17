@@ -7,7 +7,7 @@ import com.example.demo.model.Example;
 import com.example.demo.service.*;
 
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/Examples")
 public class ExampleController {
 
   private final ExampleService exampleService;
