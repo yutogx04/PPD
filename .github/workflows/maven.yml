@@ -23,7 +23,7 @@ jobs:
     - name: Start MongoDB
       uses: supercharge/mongodb-github-action@1.12.1
       with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-version: '8.0.13'
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
