@@ -28,6 +28,12 @@ jobs:
         mongodb-username: app
         mongodb-password: pass
         mongodb-db: storage
+    - uses: harmon758/postgresql-action@v1
+      with:
+        postgresql version: '11'  # See https://hub.docker.com/_/postgres for available versions
+        postgresql user: app
+        postgresql password: pass
+        postgresql db: storage
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
