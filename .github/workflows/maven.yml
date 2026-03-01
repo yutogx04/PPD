@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: cd
+      run: cd server
     - uses: actions/checkout@v4
     - name: Start MongoDB
       uses: supercharge/mongodb-github-action@1.12.1
@@ -41,4 +43,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: cd server; mvn test
+      run: mvn test
