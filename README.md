@@ -8,6 +8,7 @@
 ```
 
     systemctl start mongodb
+    systemctl start postgresql
 
 ```
 # create the user for the data base
@@ -27,6 +28,7 @@
 # run the app
 ```
 
+    cd server
     mvn spring-boot:run
 
 ```
@@ -34,7 +36,8 @@ the interface is at ```localhost:8080/Examples```
 
 # run all the test
 ```
-
+    
+    cd server
     mvn test
 
 ```
