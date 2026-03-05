@@ -32,7 +32,7 @@ jobs:
       with:
         postgresql version: '11'  # See https://hub.docker.com/_/postgres for available versions
         postgresql user: app
-        postgresql password: pass
+        postgresql password: password
         postgresql db: storage
     - name: Set up JDK 17
       uses: actions/setup-java@v4
