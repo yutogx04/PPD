@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- [POURQUOI] Permission Internet pour les appels API Retrofit -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- [POURQUOI] Nécessaire pour vérifier la connectivité réseau -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,16 +15,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidApp">
+        android:theme="@style/Theme.AndroidApp"
+        android:usesCleartextTraffic="true">
+        <!-- [POURQUOI] usesCleartextTraffic=true pour HTTP en dev (10.0.2.2).
+             À supprimer en production ou utiliser network_security_config.xml -->
+
+        <!-- ═══ Login Activity (lanceur) ═══ -->
         <activity
-            android:name=".MainActivity"
+            android:name=".auth.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- ═══ Register Activity ═══ -->
+        <activity
+            android:name=".auth.ui.RegisterActivity"
+            android:exported="false" />
+
+        <!-- ═══ Main Activity (post-auth) ═══ -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
