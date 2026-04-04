@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_light">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/catalogue_title"
+        android:textSize="24sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/text_primary"
+        android:padding="16dp"
+        android:paddingBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/btn_outline"
+        android:paddingHorizontal="14dp"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_search"
+            app:tint="@color/text_muted"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/auto_rechercher_un_parcours"
+            android:inputType="text"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_muted" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/chipContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_all"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:background="@drawable/tab_active"
+                android:paddingHorizontal="18dp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipBeginner"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_beginner"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:background="@drawable/tab_inactive"
+                android:paddingHorizontal="18dp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipInter"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_intermediate"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:background="@drawable/tab_inactive"
+                android:paddingHorizontal="18dp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipAdvanced"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="@string/filter_advanced"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:background="@drawable/tab_inactive"
+                android:paddingHorizontal="18dp"
+                android:gravity="center" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTracks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

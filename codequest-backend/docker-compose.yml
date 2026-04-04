@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: codequest-postgres
+    environment:
+      POSTGRES_DB: codequest
+      POSTGRES_USER: codequest
+      POSTGRES_PASSWORD: codequest_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: codequest-redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codequest-backend
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/codequest
+      SPRING_DATASOURCE_USERNAME: codequest
+      SPRING_DATASOURCE_PASSWORD: codequest_pass
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      APP_JWT_SECRET: CodeQuestSuperSecretKeyThatIs256BitsLong!!2024@@
+      APP_JWT_ACCESS_TOKEN_EXPIRATION_MS: 86400000
+      APP_JWT_REFRESH_TOKEN_EXPIRATION_MS: 2592000000
+      APP_DOCKER_PYTHON_IMAGE: codequest-python
+      APP_DOCKER_NODE_IMAGE: codequest-node
+      APP_DOCKER_JAVA_IMAGE: codequest-java
+      APP_DOCKER_TIMEOUT_SECONDS: 5
+      APP_DOCKER_MEMORY_LIMIT_MB: 64
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  postgres_data:

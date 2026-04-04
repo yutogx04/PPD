@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/nav_home" />
+
+    <item
+        android:id="@+id/nav_catalogue"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/nav_courses" />
+
+    <item
+        android:id="@+id/nav_code"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/nav_code" />
+
+    <item
+        android:id="@+id/nav_leaderboard"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="@string/nav_ranking" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/nav_profile" />
+
+</menu>

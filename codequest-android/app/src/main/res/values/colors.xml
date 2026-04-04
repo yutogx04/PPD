@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="primary">#FF6C63FF</color>
+    <color name="primary_light">#FFA78BFA</color>
+    <color name="primary_dark">#FF4F46E5</color>
+    <color name="secondary">#FFFF6584</color>
+
+    <color name="success">#FF10B981</color>
+    <color name="error">#FFEF4444</color>
+    <color name="warning">#FFF59E0B</color>
+
+    <color name="xp_gold">#FFFACC15</color>
+    <color name="streak_fire">#FFF97316</color>
+
+    <color name="bg_dark">#FF0D0D1A</color>
+    <color name="bg_light">#FFF8F7FF</color>
+    <color name="card_bg">#FFFFFFFF</color>
+
+    <color name="text_primary">#FF0F172A</color>
+    <color name="text_secondary">#FF64748B</color>
+    <color name="text_muted">#FF94A3B8</color>
+
+    <color name="border">#FFE2E8F0</color>
+
+    <color name="python_bg">#FFE8F5E9</color>
+    <color name="python_text">#FF1B5E20</color>
+    <color name="js_bg">#FFFFFDE7</color>
+    <color name="js_text">#FFF57F17</color>
+    <color name="java_bg">#FFFFF3E0</color>
+    <color name="java_text">#FFE65100</color>
+
+    <color name="grade_s">#FF10B981</color>
+    <color name="grade_a">#FF6C63FF</color>
+    <color name="grade_b">#FFF59E0B</color>
+    <color name="grade_c">#FFF97316</color>
+    <color name="grade_d">#FFEF4444</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="podium_gold">#FFF59E0B</color>
+    <color name="podium_silver">#FF6C63FF</color>
+    <color name="podium_bronze">#FFF97316</color>
+    <color name="crown_gold">#FFFBBF24</color>
+
+    <color name="editor_bg">#FF1A1A2E</color>
+    <color name="editor_header">#FF16213E</color>
+    <color name="line_number">#FF4B5563</color>
+    <color name="code_keyword">#FFC084FC</color>
+    <color name="code_function">#FF67E8F9</color>
+    <color name="code_string">#FF86EFAC</color>
+    <color name="code_comment">#FF6B7280</color>
+    <color name="code_number">#FFFCA5A5</color>
+
+    <color name="console_bg">#FF111827</color>
+    <color name="console_text">#FF9CA3AF</color>
+
+    <color name="nav_inactive">#FF94A3B8</color>
+    <color name="nav_active">#FF6C63FF</color>
+
+    <color name="my_rank_bg">#0D6C63FF</color>
+    <color name="badge_locked_bg">#FFF1F5F9</color>
+    <color name="concept_box_bg">#1A6C63FF</color>
+    <color name="quiz_feedback_green">#1A10B981</color>
+    <color name="quiz_feedback_red">#1AEF4444</color>
+    <color name="onboarding_start">#FF0D0D1A</color>
+    <color name="onboarding_mid">#FF1A1040</color>
+    <color name="onboarding_end">#FF2D1B69</color>
+
+    <color name="btn_run_start">#FF059669</color>
+    <color name="btn_run_end">#FF10B981</color>
+    <color name="btn_submit_start">#FF6C63FF</color>
+    <color name="btn_submit_end">#FF5B54EE</color>
+</resources>

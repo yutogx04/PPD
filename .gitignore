@@ -1,0 +1,39 @@
+# === Backend (Spring Boot) ===
+codequest-backend/target/
+codequest-backend/.idea/
+codequest-backend/*.iml
+codequest-backend/*.iws
+codequest-backend/*.ipr
+codequest-backend/build.log
+
+# === Android ===
+codequest-android/.gradle/
+codequest-android/.idea/
+codequest-android/build/
+codequest-android/app/build/
+codequest-android/local.properties
+codequest-android/*.iml
+codequest-android/app/*.iml
+codequest-android/captures/
+codequest-android/.externalNativeBuild/
+codequest-android/.cxx/
+
+# === Admin (React/Vite) ===
+codequest-admin/node_modules/
+codequest-admin/dist/
+
+# === Sensitive files ===
+codequest-backend/src/main/resources/firebase-service-account.json
+
+# === OS / IDE ===
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Misc ===
+sha.txt
+build.log
+.antigravityignore

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "547784745033",
+    "project_id": "codequest-b0bf8",
+    "storage_bucket": "codequest-b0bf8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547784745033:android:cdbfe5858de491bd979f98",
+        "android_client_info": {
+          "package_name": "com.codequest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547784745033-9g1tlgv94c6h7h0itgkcqmqs1obhlcqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codequest",
+            "certificate_hash": "7424732fa9b625a67246a58376a7f23f3ac9adee"
+          }
+        },
+        {
+          "client_id": "547784745033-011un48ufm05cnch3j7vcd21281pnb83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqqlDb2ztZfh4pCXzuvlR5kl7bEJRRftw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547784745033-011un48ufm05cnch3j7vcd21281pnb83.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
