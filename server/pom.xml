@@ -5,7 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.2</version>
+		<!-- [POURQUOI] Downgrade à 3.2.5 comme demandé (Spring Security 6.2.x inclus) -->
+		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -28,53 +29,129 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<!-- [POURQUOI] Versions centralisées pour cohérence -->
+		<jjwt.version>0.12.6</jjwt.version>
 	</properties>
-  <dependencies>
-   <!-- Source: https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
-    <dependency>
-      <groupId>de.codecentric</groupId>
-      <artifactId>spring-boot-admin-starter-client</artifactId>
-      <version>4.0.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
+
+	<dependencies>
+
+		<!-- ═══ Spring Boot Starters ═══ -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
 		</dependency>
+
+		<!-- [POURQUOI] Spring Security 6.2.x (résolu automatiquement par Boot 3.2.x) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- [POURQUOI] Bean Validation (Jakarta) pour @Valid sur les DTOs -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!-- [POURQUOI] JavaMailSender pour l'envoi d'emails HTML OTP -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<!-- [POURQUOI] Redis pour la blacklist JWT avec TTL automatique -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-    		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+
+		<!-- ═══ JWT (jjwt) ═══ -->
+		<!-- [POURQUOI] jjwt 0.12.x — dernière version stable, API fluide,
+		     supporte RS256 (asymétrique) et HS256 (symétrique) -->
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- ═══ Google OAuth ═══ -->
+		<!-- [POURQUOI] Vérification serveur du idToken Google via GoogleIdTokenVerifier -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<!-- ═══ Base de données ═══ -->
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- ═══ Utilitaires ═══ -->
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.36</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ═══ Spring Boot Admin Client (monitoring) ═══ -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>3.2.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- ═══ Test ═══ -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-    		<artifactId>lombok</artifactId>
-	    	<version>1.18.36</version>
-    		<scope>provided</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.httpcomponents.client5</groupId>
-  			<artifactId>httpclient5</artifactId>
-  			<scope>test</scope>
+			<artifactId>httpclient5</artifactId>
+			<scope>test</scope>
 		</dependency>
-</dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

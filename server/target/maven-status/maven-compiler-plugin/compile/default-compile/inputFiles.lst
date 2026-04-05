@@ -1,0 +1,16 @@
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/dto/AuthDTOs.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/exception/GlobalExceptionHandler.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/service/ExampleService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/repository/ExampleRepository.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/repository/UserRepository.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/security/JwtService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/security/SecurityConfig.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/controller/AuthController.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/service/EmailService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/PpdApplication.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/service/GoogleAuthService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/service/TokenBlacklistService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/model/User.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/service/AuthService.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/controller/ExampleController.java
+/home/amarkarrour/Desktop/PPD/PPD/server/src/main/java/com/example/demo/model/Example.java

@@ -1,0 +1,54 @@
+# ═══════════════════════════════════════════════════════════
+# Configuration Auth — CodeQuest
+# Ce fichier complète application.properties (Spring merge les deux)
+# ═══════════════════════════════════════════════════════════
+
+# ─── JWT ──────────────────────────────────────────────────
+jwt:
+  # [POURQUOI] Chemins relatifs au classpath (src/main/resources/keys/)
+  private-key: keys/private_key.pem
+  public-key: keys/public_key.pem
+  access-token-expiration: 900000       # 15 minutes en ms
+  refresh-token-expiration: 604800000   # 7 jours en ms
+  # [POURQUOI] Secret pour signer les refresh tokens (HS256) — à changer en prod !
+  refresh-token-secret: CHANGE_ME_IN_PRODUCTION_USE_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS
+
+# ─── Google OAuth ─────────────────────────────────────────
+google:
+  # [POURQUOI] Web Client ID (pas Android Client ID)
+  # Obtenu depuis Google Cloud Console → APIs & Services → Credentials
+  client-id: YOUR_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com
+
+# ─── Email (SMTP) ────────────────────────────────────────
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: your-email@gmail.com
+    password: your-app-password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true    # [POURQUOI] TLS obligatoire pour Gmail
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  # ─── Redis ──────────────────────────────────────────────
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:             # Laisser vide si pas de password Redis en dev
+
+# ─── Rate Limiting ────────────────────────────────────────
+rate-limit:
+  max-attempts: 5
+  window-seconds: 60
+
+# ─── App Meta ─────────────────────────────────────────────
+app:
+  name: CodeQuest
