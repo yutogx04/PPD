@@ -31,8 +31,7 @@ codequest/
 
 Vérifier :
 ```powershell
-java -version       # 17+
-mvn -version        # 3.8+
+java -version       # 17+ 
 docker --version    # 20+
 ```
 
@@ -41,16 +40,13 @@ docker --version    # 20+
 ```powershell
 # Ouvrir PowerShell dans le dossier codequest-backend
 
-# Démarrer PostgreSQL + Redis via Docker
-docker compose up -d postgres redis
-
 # Construire les images sandbox (une seule fois)
 docker build -t codequest-python docker/python/
 docker build -t codequest-node docker/node/
 docker build -t codequest-java docker/java/
 
-# Lancer le backend
-mvn spring-boot:run
+# Lancer tout (Postgres + Redis + Backend) en une seule commande
+docker compose up --build
 ```
 
 Tu devrais voir : `Started CodequestBackendApplication in X seconds`
@@ -75,7 +71,7 @@ npm install
 npm run dev
 ```
 
-Ouvre [http://localhost:5173](http://localhost:5173) — Login : `admin@codequest.com` / `Admin123!`
+Ouvre [http://localhost:5173](http://localhost:5173) — Login : `admin@codequest.com` / `admin123`
 
 ---
 
@@ -111,21 +107,22 @@ sudo apt install -y nodejs
 
 Vérifier :
 ```bash
-java -version && mvn -version && docker --version
+java -version && docker --version
 ```
+
 
 ### 2. Lancer le backend
 
 ```bash
 cd codequest-backend
 
-docker compose up -d postgres redis
-
+# Construire les images sandbox (une seule fois)
 docker build -t codequest-python docker/python/
 docker build -t codequest-node docker/node/
 docker build -t codequest-java docker/java/
 
-mvn spring-boot:run
+# Lancer tout (Postgres + Redis + Backend) en une seule commande
+docker compose up --build
 ```
 
 ### 3. Lancer l'app Android
@@ -145,8 +142,8 @@ cd codequest-admin && npm install && npm run dev
 ### 1. Installer les outils
 
 ```bash
-# Java 17 + Maven
-sudo pacman -S jdk17-openjdk maven
+# Java 17 (pour Android Studio uniquement)
+sudo pacman -S jdk17-openjdk
 
 # Docker
 sudo pacman -S docker docker-compose
@@ -163,7 +160,7 @@ yay -S android-studio   # ou depuis le AUR manuellement
 
 Vérifier :
 ```bash
-java -version && mvn -version && docker --version
+java -version && docker --version
 ```
 
 ### 2. Lancer le backend
@@ -171,13 +168,13 @@ java -version && mvn -version && docker --version
 ```bash
 cd codequest-backend
 
-docker compose up -d postgres redis
-
+# Construire les images sandbox (une seule fois)
 docker build -t codequest-python docker/python/
 docker build -t codequest-node docker/node/
 docker build -t codequest-java docker/java/
 
-mvn spring-boot:run
+# Lancer tout (Postgres + Redis + Backend) en une seule commande
+docker compose up --build
 ```
 
 ### 3. Lancer l'app Android
@@ -196,8 +193,7 @@ cd codequest-admin && npm install && npm run dev
 
 | Test | Résultat attendu |
 |---|---|
-| `docker compose up -d postgres redis` | Containers démarrés sans erreur |
-| `mvn spring-boot:run` | `Started CodequestBackendApplication` dans les logs |
+| `docker compose up --build` | Postgres + Redis + Backend démarrés sans erreur |
 | `curl http://localhost:8080/actuator/health` | `{"status":"UP"}` |
 | App Android → écran de login | S'affiche sans erreur |
 | Inscription → les tracks s'affichent | 9 parcours (3 langages × 3 difficultés) |
@@ -221,8 +217,54 @@ cd codequest-admin && npm install && npm run dev
 | `Port 5432 already in use` | PostgreSQL déjà installé localement — arrête-le ou change le port Docker |
 | `Port 8080 already in use` | Un autre serveur tourne sur 8080 — arrête-le |
 | Gradle sync échoue | Vérifie ta connexion internet — Android Studio télécharge les dépendances |
-| `google-services.json not found` | Le fichier est déjà inclus dans `codequest-android/app/`. Si manquant, demande-le |
-| Emails OTP non reçus | Normal en local — les identifiants email ne sont pas configurés. L'inscription fonctionne quand même |
+| `COPY failed: no source files` | Erreur Docker résolue — le Dockerfile compile Maven lui-même, aucune action requise |
+| `google-services.json not found` | Demande le fichier au propriétaire du projet |
+| `Emails OTP non reçus` | Normal en local — les identifiants email ne sont pas configurés. L'inscription fonctionne quand même |
+
+---
+
+##  Fichiers Sensibles & Configuration Google Sign-In
+
+> Ces fichiers contiennent des clés privées et ne sont **pas** dans le dépôt GitHub. Le propriétaire du projet doit les envoyer manuellement 
+
+### Fichiers à demander au propriétaire
+
+| Fichier | Où le placer |
+|---|---|
+| `firebase-service-account.json` | `codequest-backend/src/main/resources/` |
+| `google-services.json` (mis à jour) | `codequest-android/app/` |
+
+### Activer Google Sign-In sur votre machine
+
+Le bouton "Continuer avec Google" nécessite que l'empreinte de **votre PC** soit enregistrée dans Firebase. Sans cela, le reste de l'app fonctionne normalement .
+
+**Étape 1 — Obtenir vos empreintes SHA :**
+
+```bash
+# Linux / Mac — depuis le dossier codequest-android
+./gradlew signingReport
+
+# Ou via keytool directement
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+```
+
+```powershell
+# Windows PowerShell — depuis le dossier codequest-android
+.\gradlew signingReport
+
+# Ou via keytool
+keytool -list -v -keystore $env:USERPROFILE\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+```
+
+Notez les deux lignes suivantes dans l'output :
+```
+SHA1:   XX:XX:XX:XX:...
+SHA-256: XX:XX:XX:XX:...
+```
+
+**Étape 2 — Les envoyer au propriétaire du projet** qui les ajoutera dans la [Firebase Console](https://console.firebase.google.com/) → Paramètres du projet → votre app Android.
+
+**Étape 3 — Récupérer le `google-services.json` mis à jour** et le placer dans `codequest-android/app/`.
 
 ---
 
