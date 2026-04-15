@@ -5,11 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.model.entities.Lesson;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.model.Lesson;
+import com.example.demo.model.entities.Lesson;
 import com.example.demo.repository.LessonRepository;
 
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class LessonRepoTests {
     Lesson lesson = new Lesson();
     lessonRepository.save(lesson);
     Lesson result = lessonRepository.findById(lesson.getId()).get();
-    assertEquals(employee.getId(), result.getId());
+    assertEquals(lesson.getId(), result.getId());
   }
 
   @Test

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.model.Challenge;
+import com.example.demo.model.entities.Challenge ;
 import com.example.demo.repository.ChallengeRepository;
 
 import jakarta.transaction.Transactional;
@@ -20,6 +20,8 @@ public class ChallengeRepoTests {
 
   @Autowired
   private ChallengeRepository challengeRepository;
+
+
 
   @Test
   public void testFindById() {
